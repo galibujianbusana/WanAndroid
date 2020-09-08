@@ -1,0 +1,7 @@
+include ':helper'
+include ':rxjavatest'
+include ':kttest'
+include ':jetpack'
+include ':test'
+include ':app'
+rootProject.name = "WanAndroid"
