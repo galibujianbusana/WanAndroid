@@ -96,4 +96,18 @@ public class Gu {
         this.amplitude = amplitude;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "Gu{" +
+                "number='" + number + '\'' +
+                ", name='" + name + '\'' +
+                ", time='" + time + '\'' +
+                ", beginPrice='" + beginPrice + '\'' +
+                ", endPrice='" + endPrice + '\'' +
+                ", highestPrice='" + highestPrice + '\'' +
+                ", minimumPrice='" + minimumPrice + '\'' +
+                ", amplitude='" + amplitude + '\'' +
+                '}';
+    }
 }

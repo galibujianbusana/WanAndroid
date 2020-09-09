@@ -4,11 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="40dp"
     tools:context=".MainActivity">
 
 
     <EditText
         android:id="@+id/edit"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/lv"
@@ -21,8 +23,8 @@
         android:id="@+id/tv"
         android:layout_below="@+id/edit"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:text="查询详情"
+        android:layout_height="50dp"
+        android:text="获取数据"
         android:gravity="center"
         android:textColor="@android:color/black"
         android:textSize="20sp" />
@@ -33,17 +35,45 @@
         android:layout_marginLeft="20dp"
         android:layout_below="@+id/edit"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:text="添加关注"
         android:gravity="center"
         android:textColor="@android:color/black"
         android:textSize="20sp" />
 
+    <TextView
+        android:id="@+id/tv4"
+        android:layout_toRightOf="@+id/tv2"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/edit"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="删除数据"
+        android:gravity="center"
+        android:visibility="invisible"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv3"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/edit"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:text="查看列表"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:layout_alignParentRight="true" />
+
     <LinearLayout
         android:layout_below="@+id/tv2"
         android:id="@+id/title"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="30dp"
+        android:visibility="visible"
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
@@ -84,10 +114,16 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="40dp"
-            android:text="涨幅"
+            android:text="涨比%"
             android:gravity="center"
             android:textColor="@android:color/black" />
-
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:text="日期"
+            android:gravity="center"
+            android:textColor="@android:color/black" />
     </LinearLayout>
 
     <ListView
@@ -97,5 +133,42 @@
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="99dp"/>
+
+    <ListView
+        android:layout_below="@+id/tv3"
+        android:id="@+id/lvList"
+        android:layout_width="150dp"
+        android:layout_height="240dp"
+        android:background="@android:color/darker_gray"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="99dp"
+        android:visibility="gone"
+        android:layout_alignParentRight="true" />
+
+
+    <LinearLayout
+        android:id="@+id/layoutBase"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:background="@android:color/darker_gray"
+        android:layout_below="@+id/tv2"
+       android:layout_toRightOf="@+id/tv"
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        >
+        <EditText
+            android:id="@+id/editNo"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="代码号"/>
+        <TextView
+            android:id="@+id/tvAdd"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@android:color/holo_green_dark"
+            android:gravity="center"
+            android:hint="添加"/>
+    </LinearLayout>
 
 </RelativeLayout>

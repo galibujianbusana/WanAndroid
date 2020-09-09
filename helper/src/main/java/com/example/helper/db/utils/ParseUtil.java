@@ -2,6 +2,8 @@ package com.example.helper.db.utils;
 
 import com.example.helper.db.info.Gu;
 
+import java.io.IOException;
+
 import okhttp3.Response;
 
 public class ParseUtil {
@@ -38,27 +40,47 @@ public class ParseUtil {
      */
 
     /**
-     *
-     *
-     *
-     *
      * var hq_str_sh600999="招商证券,21.220,21.180,21.440,21.650,20.920,21.440,21.450,30043512,639625567.000,208827,21.440,17700,21.430,29800,21.420,60983,21.410,40592,21.400,57070,21.450,18400,21.460,11430,21.470,23650,21.480,18370,21.490,2020-09-08,15:00:00,00,";
      */
-    public static Gu parse (Response response){
-        String s = response.body().toString();
+    public static Gu parse(Response response) {
+        String s = "";
+        try {
+            s = new String(response.body().bytes(),"GBK");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        LogUtil.v("this is response  " + s);
         String body = s.split("\\\"")[1];
         String data[] = body.split(",");
         Gu gu = new Gu();
-        gu.setName(data[0]);
-        gu.setNumber("");
-        gu.setBeginPrice(data[1]);
-        gu.setEndPrice(data[3]);
-        gu.setHighestPrice(data[4]);
-        gu.setMinimumPrice(data[5]);
-        gu.setAmplitude("");
-        return  gu;
+        try {
+            gu.setName(data[0]);
+            gu.setNumber("");
+            gu.setBeginPrice(data[1]);
+            gu.setEndPrice(data[3]);
+            gu.setHighestPrice(data[4]);
+            gu.setMinimumPrice(data[5]);
+            gu.setAmplitude("");
+            gu.setTime(data[30]);
 
+            String title  = s.split("sh")[1];
+            String num = title.substring(0,6);
+            gu.setNumber(num);
+            double  cha =  Double.parseDouble(gu.getEndPrice()) -Double.parseDouble(gu.getBeginPrice()) ;
+            double am = cha / (Double.parseDouble(gu.getBeginPrice())) * 100;
+            gu.setAmplitude(String.format("%.2f", am));
 
+            int index = 0;
+            for (int i = 0; i < data.length; i ++){
+                if(data[i].contains(":")){
+                    index = i;
+                }
+            }
+            gu.setTime(data[index - 1]);
+            return gu;
+        }catch (Exception e){
+            return  null;
+        }
 
 
     }

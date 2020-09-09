@@ -50,6 +50,7 @@ public class MyAdapter extends BaseAdapter {
             holder.max = view.findViewById(R.id.max);
             holder.min = view.findViewById(R.id.min);
             holder.lv = view.findViewById(R.id.lv);
+            holder.time = view.findViewById(R.id.time);
             view.setTag(holder);
         }else{
             holder = (ViewHolder) view.getTag();
@@ -61,7 +62,17 @@ public class MyAdapter extends BaseAdapter {
         holder.max.setText(gu.getHighestPrice());
         holder.min.setText(gu.getMinimumPrice());
         holder.lv.setText(gu.getAmplitude());
-        return null;
+        holder.time.setText(gu.getTime());
+        if(Double.parseDouble(gu.getEndPrice()) > Double.parseDouble(gu.getBeginPrice())){
+            holder.end.setTextColor(context.getResources().getColor(R.color.colorRed));
+            holder.lv.setTextColor(context.getResources().getColor(R.color.colorRed));
+        }if(Double.parseDouble(gu.getEndPrice())  < Double.parseDouble(gu.getBeginPrice())){
+            holder.end.setTextColor(context.getResources().getColor(R.color.colorGreen));
+            holder.lv.setTextColor(context.getResources().getColor(R.color.colorGreen));
+        }else {
+
+        }
+        return view;
     }
 
     public final class ViewHolder {
@@ -71,6 +82,7 @@ public class MyAdapter extends BaseAdapter {
         public TextView max;
         public TextView min;
         public TextView lv;
+        public TextView time;
 
     }
 }
