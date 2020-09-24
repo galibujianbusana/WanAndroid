@@ -1,3 +1,6 @@
+include ':textreclcye'
+include ':tablayoutdemo'
+include ':zhexianview'
 include ':helper'
 include ':rxjavatest'
 include ':kttest'

@@ -56,6 +56,7 @@
             android:layout_weight="1"
             android:layout_height="40dp"
             android:text="涨幅"
+            android:visibility="gone"
             android:textSize="8sp"
             android:gravity="center"
             android:textColor="@android:color/black" />

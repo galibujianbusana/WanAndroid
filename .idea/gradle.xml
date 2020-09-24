@@ -16,7 +16,10 @@
             <option value="$PROJECT_DIR$/jetpack" />
             <option value="$PROJECT_DIR$/kttest" />
             <option value="$PROJECT_DIR$/rxjavatest" />
+            <option value="$PROJECT_DIR$/tablayoutdemo" />
             <option value="$PROJECT_DIR$/test" />
+            <option value="$PROJECT_DIR$/textreclcye" />
+            <option value="$PROJECT_DIR$/zhexianview" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
